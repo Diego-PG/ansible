@@ -1,0 +1,20 @@
+---
+- name: Añadiendo las variables especificas del OS
+  include_vars: "{{ ansible_os_family }}.yaml"
+
+- name: Instalando la repo de mysql
+  yum:
+    name: https://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+    state: present
+
+- name: yum-clean-metadata
+  command: yum clean metadata
+  args:
+    warn: no
+
+- name: Instalando MySQL (RedHat)
+  yum: name={{ item }} state=installed 
+  with_items: "{{mysql_pkgs}}"
+  when: ansible_os_family == 'RedHat'
+
+

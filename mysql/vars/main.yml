@@ -1,0 +1,4 @@
+---
+# vars file for mysql
+mysql_enablerepo: https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+

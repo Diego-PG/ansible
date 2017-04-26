@@ -1,0 +1,9 @@
+---
+#Playbook de instalación de un servidor LAMP mediante roles.
+- hosts: prod
+  remote_user: ansible
+  become: yes
+  roles:
+    - role: apache
+    - role: mysql
+

@@ -1,0 +1,23 @@
+---
+- hosts: prod
+  remote_user: ansible
+  become: yes
+  tasks:
+    - name: http version
+      shell: httpd -v
+      register: apache
+    - name: mostrar version
+      debug: var=apache.stdout_lines[0]
+    - name: fichero1
+      copy:
+        content: "{{apache.stdout_lines[0]}}"
+        dest: ~/version.txt
+    - name: fichero2
+      lineinfile:
+        path: ~/version2.txt
+        create: True
+        state: present
+        line: "{{ apache.stdout_lines[0] }}"
+    - name: mostrar version
+      debug: var=ansible_os_family
+

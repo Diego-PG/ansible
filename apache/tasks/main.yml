@@ -1,0 +1,24 @@
+---
+- name: Añadiendo las variables especificas del OS
+  include_vars: "{{ ansible_os_family }}.yaml" 
+
+- name: Instalando apache
+  yum:
+   name: "{{apache}}"
+   state: latest 
+  when: ansible_os_family == 'RedHat'
+  
+- name: Instalando apache
+  apt:
+   name: "{{ apache }}"
+   state: installed
+   update_cache: yes
+  environment: env
+  when: ansible_os_family == 'Debian'
+
+- name: Iniciando el servicio apache
+  service:
+    name: "{{apache_service}}"
+    state: started
+    enabled: yes
+
