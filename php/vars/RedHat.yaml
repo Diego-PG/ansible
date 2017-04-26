@@ -1,0 +1,7 @@
+---
+php_pkgs:
+  - php
+  - php-mysql
+
+apache-service: httpd
+web_path: /var/www/html/

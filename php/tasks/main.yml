@@ -1,0 +1,22 @@
+---
+- name: Añadiendo las variables especificas del OS
+  include_vars: "{{ ansible_os_family }}.yaml"
+
+- name: Instalando PHP (RedHat)
+  yum: name={{ item }} state=installed 
+  with_items: "{{php_pkgs}}"
+  when: ansible_os_family == 'RedHat'
+
+- name: Creando fichero prueba
+  copy:
+    src: ../files/info.php    
+    dest: "{{web_path}}"
+    owner: root
+    group: root
+    mode: 775
+
+- name: Iniciando servicios
+  service:
+    name: "{{apache_service}}"
+    state: restarted
+    enabled: yes

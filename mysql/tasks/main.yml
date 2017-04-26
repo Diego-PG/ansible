@@ -17,4 +17,8 @@
   with_items: "{{mysql_pkgs}}"
   when: ansible_os_family == 'RedHat'
 
-
+- name: Iniciando servicios
+  service:
+    name: "{{mysql_service}}"
+    state: started
+    enabled: yes
