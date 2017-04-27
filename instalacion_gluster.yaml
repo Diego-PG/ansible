@@ -1,0 +1,7 @@
+---
+- hosts: gluster
+  remote_user: ansible
+  become: yes
+  roles:
+    - role: gluster
+

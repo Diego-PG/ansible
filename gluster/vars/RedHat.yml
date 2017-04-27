@@ -1,0 +1,6 @@
+---
+gluster_pkgs:
+  - glusterfs-server
+  - glusterfs-client
+  - net-tools
+gluster-service: glusterd

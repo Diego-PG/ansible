@@ -3,6 +3,11 @@
 - hosts: prod
   remote_user: ansible
   become: yes
+  tasks:
+  - firewalld:
+      service: http
+      permanent: true
+      state: enabled
   roles:
     - role: apache
     - role: mysql
