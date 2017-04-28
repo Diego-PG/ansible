@@ -19,12 +19,13 @@
     state: latest
   with_items: "{{gluster_pkgs}}"
 
-- name: Servicio Gluster
+- name: Iniciando servicio Gluster
   service:
    name: glusterd
    state: restarted
    enabled: yes
 
+#Abro en el firewall los puertos necesarios para la comunicación de los peers
 - name: Abriendo puertos
   firewalld:
     port: "{{ item }}"
