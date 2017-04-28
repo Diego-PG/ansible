@@ -2,6 +2,7 @@
 - name: Cambiando hostname
   hostname:
     name: "{{ hname }}"
+
 - name: Populando hosts
   template:
     src: hosts.j2
