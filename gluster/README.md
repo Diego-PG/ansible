@@ -23,7 +23,8 @@ None
 Example Playbook
 ----------------
 
----
+Los host tienen que estar en un grupo llamado gluster.
+
 - hosts: gluster
   remote_user: ansible
   become: yes
