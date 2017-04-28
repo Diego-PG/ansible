@@ -2,7 +2,13 @@
 - name: Cambiando hostname
   hostname:
     name: "{{ hname }}"
-
+- name: Populando hosts
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
