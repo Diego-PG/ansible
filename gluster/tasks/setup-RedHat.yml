@@ -6,6 +6,7 @@
 
 - name: Actualizando el sistema
   yum: name=* state=latest
+  when: update
 
 - name: Instalando prerequisitos
   yum:

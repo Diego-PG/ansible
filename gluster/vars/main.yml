@@ -1,2 +1,5 @@
 ---
-# vars file for gluster
+gluster_brick: /glustervolume
+gluster_volume: vol1
+update: true
+refresh_cache: true
